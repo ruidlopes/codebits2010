@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>Static!</title> 
+		<meta charset="utf-8" /> 
+	</head> 
+	<body> 
+		<canvas id="c" width="200" height="200"></canvas> 
+<script>
+var $ = document.getElementById('c').getContext('2d');
+var d = $.getImageData(0, 0, 200, 200);
+
+var t = function() {
+	for (var i = 0; i < 160000; i += 4) {
+		var l = Math.floor(Math.random() * 255);
+		d.data[i] = l;
+		d.data[i+1] = l;
+		d.data[i+2] = l;
+		d.data[i+3] = 255;
+	}
+	$.putImageData(d, 0, 0);
+};
+
+window.setInterval(t, 1);
+</script> 
+	</body> 
+</html>

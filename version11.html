@@ -1,0 +1,21 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>Static!</title> 
+		<meta charset="utf-8" /> 
+	</head> 
+	<body> 
+		<canvas id="c" width="200" height="200"></canvas> 
+<script>
+$ = c.getContext('2d');
+d = $.getImageData(0, 0, 200, 200);
+
+setInterval(function() {
+	for (i = 16E4; i -= 4;)
+		d.data[i+3] = Math.random() * 255;
+
+	$.putImageData(d, 0, 0);
+}, 1);
+</script> 
+	</body> 
+</html>

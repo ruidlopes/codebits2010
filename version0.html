@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>Static!</title> 
+		<meta charset="utf-8" /> 
+	</head> 
+	<body> 
+		<canvas id="c" width="200" height="200"></canvas> 
+<script>
+var context = document.getElementById('c').getContext('2d');
+var dataArray = context.getImageData(0, 0, 200, 200);
+
+var tick = function() {
+	for (var i = 0; i < 160000; i += 4) {
+		var color = Math.floor(Math.random() * 255);
+		dataArray.data[i] = color;
+		dataArray.data[i+1] = color;
+		dataArray.data[i+2] = color;
+		dataArray.data[i+3] = 255;
+	}
+	context.putImageData(dataArray, 0, 0);
+};
+
+window.setInterval(tick, 1);
+</script> 
+	</body> 
+</html>
